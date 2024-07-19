@@ -16,7 +16,23 @@
 		4B07CC912C45B8CA00368447 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B07CC902C45B8CA00368447 /* NetworkClient.swift */; };
 		4B07CC942C45B96700368447 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B07CC932C45B96700368447 /* Extensions.swift */; };
 		4B07CC972C45BD9700368447 /* MovieListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B07CC962C45BD9700368447 /* MovieListViewModel.swift */; };
+		4B07CCF72C4AB2F100368447 /* OmdbApiUIKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B07CCF62C4AB2F100368447 /* OmdbApiUIKitTests.swift */; };
+		4B07CCFD2C4AB3D900368447 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B07CC902C45B8CA00368447 /* NetworkClient.swift */; };
+		4B07CCFE2C4AB3FE00368447 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B07CC7C2C45B22000368447 /* ViewController.swift */; };
+		4B07CCFF2C4AB40200368447 /* MovieListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B07CC962C45BD9700368447 /* MovieListViewModel.swift */; };
+		4B07CD002C4AB40600368447 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B07CC932C45B96700368447 /* Extensions.swift */; };
+		4B07CD012C4AB5BE00368447 /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B07CC8D2C45B74800368447 /* MovieModel.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4B07CCF82C4AB2F100368447 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4B07CC6D2C45B21F00368447 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4B07CC742C45B21F00368447;
+			remoteInfo = OmdbApiUIKit;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		4B07CC752C45B22000368447 /* OmdbApiUIKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OmdbApiUIKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -30,10 +46,19 @@
 		4B07CC902C45B8CA00368447 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		4B07CC932C45B96700368447 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		4B07CC962C45BD9700368447 /* MovieListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewModel.swift; sourceTree = "<group>"; };
+		4B07CCF42C4AB2F100368447 /* OmdbApiUIKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OmdbApiUIKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B07CCF62C4AB2F100368447 /* OmdbApiUIKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmdbApiUIKitTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		4B07CC722C45B21F00368447 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4B07CCF12C4AB2F100368447 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -47,6 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				4B07CC772C45B22000368447 /* OmdbApiUIKit */,
+				4B07CCF52C4AB2F100368447 /* OmdbApiUIKitTests */,
 				4B07CC762C45B22000368447 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -55,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				4B07CC752C45B22000368447 /* OmdbApiUIKit.app */,
+				4B07CCF42C4AB2F100368447 /* OmdbApiUIKitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -108,6 +135,14 @@
 			path = "View Models";
 			sourceTree = "<group>";
 		};
+		4B07CCF52C4AB2F100368447 /* OmdbApiUIKitTests */ = {
+			isa = PBXGroup;
+			children = (
+				4B07CCF62C4AB2F100368447 /* OmdbApiUIKitTests.swift */,
+			);
+			path = OmdbApiUIKitTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -128,6 +163,24 @@
 			productReference = 4B07CC752C45B22000368447 /* OmdbApiUIKit.app */;
 			productType = "com.apple.product-type.application";
 		};
+		4B07CCF32C4AB2F100368447 /* OmdbApiUIKitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4B07CCFC2C4AB2F100368447 /* Build configuration list for PBXNativeTarget "OmdbApiUIKitTests" */;
+			buildPhases = (
+				4B07CCF02C4AB2F100368447 /* Sources */,
+				4B07CCF12C4AB2F100368447 /* Frameworks */,
+				4B07CCF22C4AB2F100368447 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4B07CCF92C4AB2F100368447 /* PBXTargetDependency */,
+			);
+			name = OmdbApiUIKitTests;
+			productName = OmdbApiUIKitTests;
+			productReference = 4B07CCF42C4AB2F100368447 /* OmdbApiUIKitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -140,6 +193,10 @@
 				TargetAttributes = {
 					4B07CC742C45B21F00368447 = {
 						CreatedOnToolsVersion = 15.3;
+					};
+					4B07CCF32C4AB2F100368447 = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = 4B07CC742C45B21F00368447;
 					};
 				};
 			};
@@ -157,6 +214,7 @@
 			projectRoot = "";
 			targets = (
 				4B07CC742C45B21F00368447 /* OmdbApiUIKit */,
+				4B07CCF32C4AB2F100368447 /* OmdbApiUIKitTests */,
 			);
 		};
 /* End PBXProject section */
@@ -168,6 +226,13 @@
 			files = (
 				4B07CC822C45B22100368447 /* Assets.xcassets in Resources */,
 				4B07CC852C45B22100368447 /* Base in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4B07CCF22C4AB2F100368447 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,7 +253,28 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4B07CCF02C4AB2F100368447 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4B07CD012C4AB5BE00368447 /* MovieModel.swift in Sources */,
+				4B07CD002C4AB40600368447 /* Extensions.swift in Sources */,
+				4B07CCFE2C4AB3FE00368447 /* ViewController.swift in Sources */,
+				4B07CCF72C4AB2F100368447 /* OmdbApiUIKitTests.swift in Sources */,
+				4B07CCFD2C4AB3D900368447 /* NetworkClient.swift in Sources */,
+				4B07CCFF2C4AB40200368447 /* MovieListViewModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4B07CCF92C4AB2F100368447 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4B07CC742C45B21F00368447 /* OmdbApiUIKit */;
+			targetProxy = 4B07CCF82C4AB2F100368447 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		4B07CC832C45B22100368447 /* LaunchScreen.storyboard */ = {
@@ -377,6 +463,42 @@
 			};
 			name = Release;
 		};
+		4B07CCFA2C4AB2F100368447 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8K5Z5UAV3V;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.OmdbApiUIKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OmdbApiUIKit.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/OmdbApiUIKit";
+			};
+			name = Debug;
+		};
+		4B07CCFB2C4AB2F100368447 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8K5Z5UAV3V;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.OmdbApiUIKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OmdbApiUIKit.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/OmdbApiUIKit";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -394,6 +516,15 @@
 			buildConfigurations = (
 				4B07CC8A2C45B22100368447 /* Debug */,
 				4B07CC8B2C45B22100368447 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4B07CCFC2C4AB2F100368447 /* Build configuration list for PBXNativeTarget "OmdbApiUIKitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4B07CCFA2C4AB2F100368447 /* Debug */,
+				4B07CCFB2C4AB2F100368447 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
