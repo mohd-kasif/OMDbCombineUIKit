@@ -84,7 +84,18 @@ extension ViewController:UITableViewDataSource, UITableViewDelegate{
         var config=cell.defaultContentConfiguration()
         config.text=movie.title
         config.secondaryText=movie.year
-        cell.contentConfiguration=config
+        if let url=URL(string: movie.poster){
+            DispatchQueue.global().async {
+                if let data=try? Data(contentsOf: url){
+                    DispatchQueue.main.async {
+                        let image=UIImage(data: data)
+                        config.image=image
+                        config.imageProperties.maximumSize=CGSize(width: 70, height: 70)
+                        cell.contentConfiguration=config
+                    }
+                }
+            }
+        }
         return cell
         
     }
