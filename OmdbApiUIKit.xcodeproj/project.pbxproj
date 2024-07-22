@@ -22,6 +22,7 @@
 		4B07CCFF2C4AB40200368447 /* MovieListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B07CC962C45BD9700368447 /* MovieListViewModel.swift */; };
 		4B07CD002C4AB40600368447 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B07CC932C45B96700368447 /* Extensions.swift */; };
 		4B07CD012C4AB5BE00368447 /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B07CC8D2C45B74800368447 /* MovieModel.swift */; };
+		4B07CD042C4D4E9200368447 /* CardViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B07CD032C4D4E9200368447 /* CardViewContoller.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		4B07CC962C45BD9700368447 /* MovieListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewModel.swift; sourceTree = "<group>"; };
 		4B07CCF42C4AB2F100368447 /* OmdbApiUIKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OmdbApiUIKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B07CCF62C4AB2F100368447 /* OmdbApiUIKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmdbApiUIKitTests.swift; sourceTree = "<group>"; };
+		4B07CD032C4D4E9200368447 /* CardViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewContoller.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 		4B07CC772C45B22000368447 /* OmdbApiUIKit */ = {
 			isa = PBXGroup;
 			children = (
+				4B07CD022C4D4E7A00368447 /* View Controllers */,
 				4B07CC952C45BD7E00368447 /* View Models */,
 				4B07CC922C45B95900368447 /* Extensions */,
 				4B07CC8F2C45B8B100368447 /* NetworkClient */,
@@ -141,6 +144,14 @@
 				4B07CCF62C4AB2F100368447 /* OmdbApiUIKitTests.swift */,
 			);
 			path = OmdbApiUIKitTests;
+			sourceTree = "<group>";
+		};
+		4B07CD022C4D4E7A00368447 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4B07CD032C4D4E9200368447 /* CardViewContoller.swift */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -244,6 +255,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B07CC8E2C45B74800368447 /* MovieModel.swift in Sources */,
+				4B07CD042C4D4E9200368447 /* CardViewContoller.swift in Sources */,
 				4B07CC942C45B96700368447 /* Extensions.swift in Sources */,
 				4B07CC912C45B8CA00368447 /* NetworkClient.swift in Sources */,
 				4B07CC972C45BD9700368447 /* MovieListViewModel.swift in Sources */,
