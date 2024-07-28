@@ -5,19 +5,13 @@
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         BreakpointExtensionID = "Xcode.Breakpoint.IDETestFailureBreakpoint">
          <BreakpointContent
-            uuid = "7ECDA0C8-70BC-4398-8988-2488B8CF93E7"
+            uuid = "E7B3571B-DD83-4188-9BC9-0920C2197F17"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "OmdbApiUIKit/ViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
-            landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
+            breakpointStackSelectionBehavior = "1">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -30,6 +30,7 @@ class ViewController: UIViewController {
     lazy var tableView:UITableView={
         let table=UITableView()
         table.translatesAutoresizingMaskIntoConstraints=false
+        table.separatorStyle=UITableViewCell.SeparatorStyle.none
         table.delegate=self
         table.dataSource=self
         return table

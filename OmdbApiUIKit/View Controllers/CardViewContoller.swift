@@ -21,11 +21,16 @@ class CardViewContoller:UITableViewCell{
     
     let container:UIView={
         let uiview=UIView()
-        uiview.backgroundColor = .fadedBlack
+        uiview.backgroundColor = .cardBackground
         uiview.layer.cornerRadius=10
         uiview.layer.borderWidth=1
+        uiview.layer.shadowColor=UIColor.black.cgColor
+        uiview.layer.shadowOpacity=0.2
+        uiview.layer.shadowOffset=CGSize(width: 2, height: 3)
+        uiview.layer.shadowRadius=10
         uiview.layer.borderColor=UIColor.darkGray.withAlphaComponent(0.3).cgColor
         uiview.translatesAutoresizingMaskIntoConstraints=false
+    
         return uiview
     }()
     
@@ -34,7 +39,7 @@ class CardViewContoller:UITableViewCell{
         label.translatesAutoresizingMaskIntoConstraints=false
         label.font = .systemFont(ofSize: 18, weight: .bold)
         label.textAlignment = .center
-        label.textColor = .white
+        label.textColor = .black
         return label
         
     }()
@@ -51,7 +56,7 @@ class CardViewContoller:UITableViewCell{
         label.translatesAutoresizingMaskIntoConstraints=false
         label.font = .systemFont(ofSize: 16, weight: .regular)
         label.textAlignment = .center
-        label.textColor = .white
+        label.textColor = .black
         return label
     }()
     
