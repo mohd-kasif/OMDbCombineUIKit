@@ -51,7 +51,7 @@ class ViewController: UIViewController {
     
     private func setupUI(){
         let stack=UIStackView()
-        tableView.register(CardViewContoller.self, forCellReuseIdentifier: "Cell")
+        tableView.register(CardViewContoller.self, forCellReuseIdentifier: CardViewContoller.reuseID)
         stack.translatesAutoresizingMaskIntoConstraints=false
         stack.axis = .vertical
         
@@ -80,28 +80,9 @@ extension ViewController:UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell=tableView.dequeueReusableCell(withIdentifier: CardViewContoller, for: indexPath) as? CardViewContoller
-        guard let cell=tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? CardViewContoller else {fatalError("error in showig cell")}
+        guard let cell=tableView.dequeueReusableCell(withIdentifier: CardViewContoller.reuseID, for: indexPath) as? CardViewContoller else {fatalError("error in showig cell")}
         let movie=vm.movies[indexPath.row]
-//        var config=cell.defaultContentConfiguration()
-//        config.text=movie.title
-//        config.secondaryText=movie.year
-        if let url=URL(string: movie.poster){
-            DispatchQueue.global().async {
-                if let data=try? Data(contentsOf: url){
-                    DispatchQueue.main.async {
-                        let image=UIImage(data: data)
-                        if let image=image{
-                            cell.configureCell(name: movie.title, year: movie.year, images: image)
-                        }
-                     
-//                        config.image=image
-//                        config.imageProperties.maximumSize=CGSize(width: 70, height: 70)
-//                        cell.contentConfiguration=config
-                    }
-                }
-            }
-        }
+        cell.configureCell(name: movie.title, year: movie.year, images: movie.poster)
         return cell
         
     }

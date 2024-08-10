@@ -7,7 +7,7 @@
 
 import Foundation
 import Combine
-
+import UIKit
 class MovieListViewModel{
     @Published private(set) var movies:[Movie]=[]
     @Published var isLoading:Bool=false
