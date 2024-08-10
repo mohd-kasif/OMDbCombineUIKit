@@ -33,4 +33,19 @@ class NetworkClient{
             }
             .eraseToAnyPublisher()
     }
+    
+    func fetchMoviewDetail(withID imdbId:String)->AnyPublisher<MovieDetailModel, Error>{
+        guard let url=URL(string: "https://www.omdbapi.com/?i=\(imdbId)&apikey=\(APIKey.apikey)") else {
+            return Fail(error: NetworkError.invalidUrl).eraseToAnyPublisher()
+        }
+        
+        return URLSession.shared.dataTaskPublisher(for: url)
+            .map(\.data)
+            .decode(type: MovieDetailModel.self, decoder: JSONDecoder())
+            .receive(on: DispatchQueue.main)
+            .catch{error->AnyPublisher<MovieDetailModel, Error> in
+                return Fail(error: error).eraseToAnyPublisher()
+            }
+            .eraseToAnyPublisher()
+    }
 }

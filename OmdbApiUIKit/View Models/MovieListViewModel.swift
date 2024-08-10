@@ -10,6 +10,7 @@ import Combine
 import UIKit
 class MovieListViewModel{
     @Published private(set) var movies:[Movie]=[]
+    @Published private(set) var movieDetail:MovieDetailModel=MovieDetailModel(title: "", year: "", rated: "", released: "", runtime: "", genre: "", director: "", writer: "", actors: "", plot: "", language: "", country: "", awards: "", poster: "", metascore: "", imdbRating: "", imdbVotes: "", imdbID: "", type: "",  response: "")
     @Published var isLoading:Bool=false
     private let client:NetworkClient
     private var cancellable:Set<AnyCancellable>=[]
@@ -41,6 +42,21 @@ class MovieListViewModel{
             }
         } receiveValue: {[weak self] movies in
             self?.movies=movies
+        }.store(in: &cancellable)
+
+    }
+    
+    func fetchMovieDetail(imdbId:String){
+        client.fetchMoviewDetail(withID: imdbId).sink { completion in
+            switch completion{
+            case .finished:
+                self.isLoading=true
+            case .failure(let error):
+                print(error, "error in ")
+            }
+        } receiveValue: { [weak self] detail in
+            guard let self=self else {return}
+            self.movieDetail=detail
         }.store(in: &cancellable)
 
     }

@@ -25,14 +25,17 @@ class OMDBImage: UIImageView {
         translatesAutoresizingMaskIntoConstraints=false
         image=UIImage(named: "placeholldar-image")
     }
-    
-    
+
     func downloadImage(url:String){
         if let image=self.cache.object(forKey: url as NSString){
             self.image=image
+            return
         }
         
-        guard let urlString=URL(string: url) else {return}
+        guard let urlString=URL(string: url) else {
+        print("unable to covert url")
+            return
+        }
         
         let dataTask=URLSession.shared.dataTask(with: urlString){[weak self] data, response, error in
             guard let self=self else {return}

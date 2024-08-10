@@ -87,6 +87,12 @@ extension ViewController:UITableViewDataSource, UITableViewDelegate{
         
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let movie=vm.movies[indexPath.row]
+        let view=UINavigationController(rootViewController: MovieDetailVC(imdb: movie.imdbID))
+        present(view, animated: true)
+    }
+    
     
 }
 
