@@ -18,7 +18,6 @@ class MovieDetailVC: UIViewController {
     let movieName=OMDBTitleLabel(alignement: .left, fontSize: 20)
     let imdbRating=OMDBBodyLabel(alignement: .right)
     let movieLabel=LabelView(frame: .zero)
-
     let starImage=UIImageView()
     
     let uiView=UIView()
@@ -106,7 +105,7 @@ class MovieDetailVC: UIViewController {
     
     func configUIElements(withDetail detail:MovieDetailModel){
         self.image.downloadImage(url: detail.poster)
-        self.movieName.text=detail.title
+        self.movieName.text="\(detail.title)"+" "+"("+"\(detail.year)" + ")"
         self.imdbRating.text=detail.imdbRating
         self.movieLabel.config(runningTime: detail.runtime, year: detail.year, genre: detail.genre)
     }

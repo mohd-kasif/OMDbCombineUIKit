@@ -21,7 +21,7 @@ class MovieLabel:UILabel{
         layer.cornerRadius=10
         layer.borderWidth=1
         textAlignment = .center
-        font=UIFont.systemFont(ofSize: 16, weight: .medium)
+        font=UIFont.systemFont(ofSize: 14, weight: .light)
         backgroundColor = .systemGray4.withAlphaComponent(0.7)
         layer.borderColor = UIColor.black.cgColor
         textColor = .label

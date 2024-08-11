@@ -32,6 +32,7 @@
 		4B76E67A2C695420005D5C19 /* MovieLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B76E6792C695420005D5C19 /* MovieLabel.swift */; };
 		4B76E67C2C69543F005D5C19 /* LabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B76E67B2C69543F005D5C19 /* LabelView.swift */; };
 		4B76E67E2C695455005D5C19 /* CustomBackBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B76E67D2C695455005D5C19 /* CustomBackBtn.swift */; };
+		4B76E6812C69627F005D5C19 /* FavoriteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B76E6802C69627F005D5C19 /* FavoriteVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		4B76E6792C695420005D5C19 /* MovieLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieLabel.swift; sourceTree = "<group>"; };
 		4B76E67B2C69543F005D5C19 /* LabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelView.swift; sourceTree = "<group>"; };
 		4B76E67D2C695455005D5C19 /* CustomBackBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackBtn.swift; sourceTree = "<group>"; };
+		4B76E6802C69627F005D5C19 /* FavoriteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 		4B07CC772C45B22000368447 /* OmdbApiUIKit */ = {
 			isa = PBXGroup;
 			children = (
+				4B76E67F2C695EC4005D5C19 /* New Group */,
 				4B76E6762C67F7C6005D5C19 /* Utility */,
 				4B5C00152C66C00A00741200 /* Views */,
 				4B07CD022C4D4E7A00368447 /* View Controllers */,
@@ -171,6 +174,7 @@
 			children = (
 				4B07CD032C4D4E9200368447 /* CardViewContoller.swift */,
 				4B76E6742C67F5BE005D5C19 /* MovieDetailVC.swift */,
+				4B76E6802C69627F005D5C19 /* FavoriteVC.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -195,6 +199,13 @@
 				4B76E6772C67F7D2005D5C19 /* Constants.swift */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		4B76E67F2C695EC4005D5C19 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -307,6 +318,7 @@
 				4B07CC912C45B8CA00368447 /* NetworkClient.swift in Sources */,
 				4B5C001D2C675B1F00741200 /* OMDBBodyLabel.swift in Sources */,
 				4B07CC972C45BD9700368447 /* MovieListViewModel.swift in Sources */,
+				4B76E6812C69627F005D5C19 /* FavoriteVC.swift in Sources */,
 				4B5C001F2C675B9900741200 /* OMDBCardView.swift in Sources */,
 				4B76E67A2C695420005D5C19 /* MovieLabel.swift in Sources */,
 				4B07CC7D2C45B22000368447 /* ViewController.swift in Sources */,

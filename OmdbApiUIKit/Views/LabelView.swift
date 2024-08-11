@@ -46,9 +46,9 @@ class LabelView:UIView{
     }
     
     func config(runningTime:String, year:String, genre:String){
-                self.runningTime.text=runningTime
-                self.movieYear.text=year
-                self.genre.text=genre
+        self.runningTime.text=runningTime.timeHour()
+        self.movieYear.text=year
+        self.genre.text=genre
     }
 
 }

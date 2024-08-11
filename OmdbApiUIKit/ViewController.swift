@@ -18,15 +18,6 @@ class ViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    lazy var seacrhBar: UISearchBar = {
-        let search=UISearchBar()
-        search.translatesAutoresizingMaskIntoConstraints=false
-        search.placeholder="Search.."
-        search.delegate=self
-        return search
-    }()
-    
     lazy var tableView:UITableView={
         let table=UITableView()
         table.translatesAutoresizingMaskIntoConstraints=false
@@ -47,30 +38,31 @@ class ViewController: UIViewController {
             }
             .store(in: &cancellable)
         setupUI()
+        configSearchBar()
     }
     
     private func setupUI(){
-        let stack=UIStackView()
         tableView.register(CardViewContoller.self, forCellReuseIdentifier: CardViewContoller.reuseID)
-        stack.translatesAutoresizingMaskIntoConstraints=false
-        stack.axis = .vertical
+        navigationController?.toolbar.backgroundColor = .systemBackground
         
-        view.addSubview(stack)
-        
-        //constraint
-        stack.topAnchor.constraint(equalTo: view.topAnchor, constant: 60).isActive=true
-        stack.widthAnchor.constraint(equalTo: view.widthAnchor).isActive=true
-        stack.heightAnchor.constraint(equalTo: view.heightAnchor).isActive=true
-        
-        stack.addArrangedSubview(seacrhBar)
-        stack.addArrangedSubview(tableView)
-        
-        seacrhBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive=true
-        seacrhBar.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive=true
-        seacrhBar.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive=true
+        view.addSubview(tableView)
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: view.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
     }
-
-
+    
+    func configSearchBar(){
+        let searchBar=UISearchController()
+        searchBar.searchBar.backgroundColor = .systemBackground
+        searchBar.searchBar.tintColor = .systemCyan
+        searchBar.searchBar.placeholder="Enter movie name"
+        searchBar.searchResultsUpdater=self
+        navigationItem.searchController=searchBar
+        
+    }
 }
 
 
@@ -96,8 +88,9 @@ extension ViewController:UITableViewDataSource, UITableViewDelegate{
     
 }
 
-extension ViewController:UISearchBarDelegate{
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        vm.setSearchText(searchText)
+extension ViewController:UISearchResultsUpdating{
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let searctString=searchController.searchBar.text else {return}
+        vm.setSearchText(searctString)
     }
 }

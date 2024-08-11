@@ -18,10 +18,33 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene=(scene as? UIWindowScene) else {return}
         let window=UIWindow(windowScene: windowScene)
-        let controller=UINavigationController(rootViewController: ViewController(vm: MovieListViewModel(client: NetworkClient())))
-        window.rootViewController=controller
+//        let controller=UINavigationController(rootViewController: ViewController(vm: MovieListViewModel(client: NetworkClient())))
+        window.rootViewController=createTabBar()
         window.makeKeyAndVisible()
         self.window=window
+    }
+    
+    func serachNC()->UINavigationController{
+        let searchVC=ViewController(vm:MovieListViewModel(client: NetworkClient()))
+        searchVC.title="Search"
+        searchVC.tabBarItem=UITabBarItem(tabBarSystemItem: .search, tag: 0)
+        return UINavigationController(rootViewController: searchVC)
+    }
+    
+    func favNC()->UINavigationController{
+        let favNC=FavoriteVC()
+        favNC.title="Favorite"
+        favNC.tabBarItem=UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
+        return UINavigationController(rootViewController: favNC)
+    }
+    
+    func createTabBar()->UITabBarController{
+        let tabBar=UITabBarController()
+        tabBar.tabBar.backgroundColor = .systemGray4
+        UITabBar.appearance().tintColor = .systemMint
+        UINavigationBar.appearance().tintColor = .systemBackground
+        tabBar.viewControllers=[serachNC(), favNC()]
+        return tabBar
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
