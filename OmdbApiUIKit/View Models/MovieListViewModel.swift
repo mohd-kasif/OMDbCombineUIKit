@@ -13,6 +13,7 @@ class MovieListViewModel{
     @Published private(set) var movieDetail:MovieDetailModel=MovieDetailModel(title: "", year: "", rated: "", released: "", runtime: "", genre: "", director: "", writer: "", actors: "", plot: "", language: "", country: "", awards: "", poster: "", metascore: "", imdbRating: "", imdbVotes: "", imdbID: "", type: "",  response: "")
     @Published var isLoading:Bool=false
     private let client:NetworkClient
+    var page:Int=1
     private var cancellable:Set<AnyCancellable>=[]
     private var searchSubject=CurrentValueSubject<String,Never>("")
     init(client:NetworkClient) {
@@ -24,16 +25,25 @@ class MovieListViewModel{
         searchSubject
             .debounce(for: .seconds(0.5), scheduler: DispatchQueue.main)
             .sink {[weak self] val in
-            self?.loadMovies(search: val)
-        }.store(in: &cancellable)
+                guard let self=self else {return}
+                movies.removeAll()
+                self.page=1
+                self.loadMovies(search: val, page:self.page)
+            }.store(in: &cancellable)
     }
     
     func setSearchText(_ searchText:String){
         searchSubject.send(searchText)
     }
     
-    func loadMovies(search:String){
-        client.fetchMovies(name: search).sink { completion in
+    func loadMoreMovies(){
+//        guard !isLoading else {return}
+        page += 1
+        loadMovies(search: searchSubject.value, page: page)
+    }
+    
+    func loadMovies(search:String, page:Int){
+        client.fetchMovies(name: search, page: page).sink { completion in
             switch completion{
             case .finished:
                 self.isLoading=true
@@ -41,7 +51,10 @@ class MovieListViewModel{
                 print(error)
             }
         } receiveValue: {[weak self] movies in
-            self?.movies=movies
+            guard let self=self else {return}
+            self.movies.append(contentsOf: movies)
+            print(self.movies.count, "movie")
+            self.isLoading=false
         }.store(in: &cancellable)
 
     }

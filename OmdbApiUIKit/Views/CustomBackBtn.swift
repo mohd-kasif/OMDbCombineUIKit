@@ -25,7 +25,7 @@ class CustomBackBtn:UIButton{
     }
     
     func setupUI(){
-        backgroundColor = .systemBackground.withAlphaComponent(0.8)
+        backgroundColor = .white.withAlphaComponent(0.8)
         tintColor = .label
         frame=CGRect(x: 0, y: 0, width: 30, height: 30)
         layer.cornerRadius=15

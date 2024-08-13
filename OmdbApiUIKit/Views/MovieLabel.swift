@@ -23,7 +23,7 @@ class MovieLabel:UILabel{
         textAlignment = .center
         font=UIFont.systemFont(ofSize: 14, weight: .light)
         backgroundColor = .systemGray4.withAlphaComponent(0.7)
-        layer.borderColor = UIColor.black.cgColor
+//        layer.borderColor = UIColor.white.cgColor
         textColor = .label
         minimumScaleFactor = 0.8
         lineBreakMode = .byTruncatingTail
@@ -36,5 +36,14 @@ class MovieLabel:UILabel{
         let size = super.intrinsicContentSize
              let adjustedSize = CGSize(width: size.width + 20, height: size.height + 10)
              return adjustedSize
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        if traitCollection.userInterfaceStyle == .light{
+            layer.borderColor = UIColor.black.cgColor
+        } else {
+            layer.borderColor=UIColor.white.cgColor
+        }
     }
 }

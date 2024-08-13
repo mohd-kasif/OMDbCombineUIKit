@@ -8,23 +8,62 @@
 import UIKit
 
 class FavoriteVC: UIViewController {
-
+    var favList:[FavModel]=[]
+    let tableView=UITableView()
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemRed
-
-        // Do any additional setup after loading the view.
+        view.backgroundColor = .systemBackground
+        retriveFav()
+        setupUI()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        retriveFav()
     }
-    */
+    func retriveFav(){
+        FavMoviesStorage.retrieve {[weak self] result in
+            guard let self=self else {return}
+            switch result {
+            case .success(let success):
+                DispatchQueue.main.async {
+                    self.favList=success
+                    self.tableView.reloadData()
+                    print(self.favList,"fav list")
+                }
+            case .failure(let failure):
+                print(failure, "failure")
+            }
+        }
+    }
+    
+    func setupUI(){
+        tableView.frame=view.bounds
+        tableView.dataSource=self
+        tableView.delegate=self
+        tableView.translatesAutoresizingMaskIntoConstraints=false
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        tableView.separatorStyle = .singleLine
+        tableView.backgroundColor = .systemBackground
+        view.addSubview(tableView)
+    }
 
+}
+
+extension FavoriteVC:UITableViewDataSource, UITableViewDelegate{
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell=tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let item=favList[indexPath.row]
+        var config=cell.defaultContentConfiguration()
+        config.text=item.name
+        config.secondaryText=item.director
+        cell.contentConfiguration=config
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return favList.count
+    }
+    
+    
 }

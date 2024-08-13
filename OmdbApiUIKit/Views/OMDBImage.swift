@@ -33,7 +33,6 @@ class OMDBImage: UIImageView {
         }
         
         guard let urlString=URL(string: url) else {
-        print("unable to covert url")
             return
         }
         

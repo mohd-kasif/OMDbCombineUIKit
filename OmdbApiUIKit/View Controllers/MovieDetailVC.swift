@@ -30,12 +30,26 @@ class MovieDetailVC: UIViewController {
         let btn1=UIBarButtonItem(customView: addFavorite)
         let btn2=UIBarButtonItem(customView: shareBtn)
         navigationItem.rightBarButtonItems=[btn2, btn1]
+        addFavorite.addTarget(self, action: #selector(addToFavorite), for: .touchUpInside)
 
         
         setupUI()
     }
     @objc func dismissVC(){
         dismiss(animated: true)
+    }
+    
+    @objc func addToFavorite(){
+        let detail=vm.movieDetail
+        let favMovie=FavModel(name: detail.title, url: detail.poster, director: detail.director, runTime: detail.runtime, imdbRating: detail.imdbRating, imdbID: detail.imdbID)
+        FavMoviesStorage.updateWith(favorite: favMovie, type: .add) {[weak self] error in
+            guard let self=self else {return}
+            if error==nil{
+                self.presentAlertVC(title: "Success", message: "You have successfully added this moview in your favroite list.", buttonTitle: "Ok")
+            } else {
+                self.presentAlertVC(title: "S.omething went wring", message: error?.localizedDescription ?? "", buttonTitle: "Ok")
+            }
+        }
     }
     
     init(imdb:String){

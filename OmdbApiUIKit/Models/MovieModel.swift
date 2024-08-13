@@ -65,3 +65,13 @@ struct MovieDetailModel: Codable {
         case response = "Response"
     }
 }
+
+
+struct FavModel:Codable, Hashable{
+    let name:String
+    let url:String
+    let director:String
+    let runTime:String
+    let imdbRating:String
+    let imdbID:String
+}

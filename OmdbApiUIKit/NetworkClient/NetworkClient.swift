@@ -18,8 +18,8 @@ enum APIKey{
 
 class NetworkClient{
     
-    func fetchMovies(name:String)->AnyPublisher<[Movie],Error>{
-        guard let encodeSearch=name.urlEncode, let url=URL(string: "https://www.omdbapi.com/?s=\(encodeSearch)&page=1&apikey=\(APIKey.apikey)") else {
+    func fetchMovies(name:String, page:Int)->AnyPublisher<[Movie],Error>{
+        guard let encodeSearch=name.urlEncode, let url=URL(string: "https://www.omdbapi.com/?s=\(encodeSearch)&page=\(page)&apikey=\(APIKey.apikey)") else {
             return Fail(error: NetworkError.invalidUrl).eraseToAnyPublisher()
         }
         

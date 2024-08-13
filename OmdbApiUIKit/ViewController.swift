@@ -10,6 +10,7 @@ import Combine
 class ViewController: UIViewController {
     private let vm:MovieListViewModel
     private var cancellable:Set<AnyCancellable>=[]
+    private let activityIndicator = UIActivityIndicatorView(style: .large)
     init(vm: MovieListViewModel) {
         self.vm = vm
         super.init(nibName: nil, bundle: nil)
@@ -29,16 +30,20 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor=UIColor.white
+        getMoviewList()
+        setupUI()
+        configSearchBar()
+    }
+    
+    func getMoviewList(){
         vm.$isLoading
             .receive(on: DispatchQueue.main)
-            .sink { val in
+            .sink {[weak self] val in
+                guard let self=self else {return}
                 if val{
                     self.tableView.reloadData()
                 }
-            }
-            .store(in: &cancellable)
-        setupUI()
-        configSearchBar()
+            }.store(in: &cancellable)
     }
     
     private func setupUI(){
@@ -46,11 +51,15 @@ class ViewController: UIViewController {
         navigationController?.toolbar.backgroundColor = .systemBackground
         
         view.addSubview(tableView)
+        view.addSubview(activityIndicator)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
     }
     
@@ -85,6 +94,15 @@ extension ViewController:UITableViewDataSource, UITableViewDelegate{
         present(view, animated: true)
     }
     
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        let offsetY=scrollView.contentOffset.y
+        let contentHeight=scrollView.contentSize.height
+        let height=scrollView.frame.size.height
+        
+        if offsetY>contentHeight-height{
+            vm.loadMoreMovies()
+        }
+    }
     
 }
 
