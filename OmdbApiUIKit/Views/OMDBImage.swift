@@ -54,6 +54,39 @@ class OMDBImage: UIImageView {
         }
         dataTask.resume()
     }
+    
+    
+    func returnImage(url:String, completion:@escaping (UIImage?)->Void){
+        if let image=self.cache.object(forKey: url as NSString){
+            completion(image)
+            return
+        }
+        guard let urlString=URL(string: url) else {
+            completion(nil)
+            return
+        }
+        
+        let dataTask=URLSession.shared.dataTask(with: urlString){[weak self] data, response, error in
+            guard let self else {return}
+            if error != nil{
+                completion(nil)
+                return
+            }
+            guard let data=data, let response=response as? HTTPURLResponse, response.statusCode==200 else{
+                completion(nil)
+                return
+            }
+            guard let image=UIImage(data: data) else {
+                completion(nil)
+                return
+            }
+            self.cache.setObject(image, forKey: url as NSString)
+            completion(image)
+        }
+        dataTask.resume()
+    }
+
+    
 
 }
 

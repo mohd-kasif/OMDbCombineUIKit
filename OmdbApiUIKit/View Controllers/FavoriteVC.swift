@@ -9,6 +9,7 @@ import UIKit
 
 class FavoriteVC: UIViewController {
     var favList:[FavModel]=[]
+    var imageView=OMDBImage(frame: .zero)
     let tableView=UITableView()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,9 +56,19 @@ extension FavoriteVC:UITableViewDataSource, UITableViewDelegate{
         let cell=tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let item=favList[indexPath.row]
         var config=cell.defaultContentConfiguration()
-        config.text=item.name
-        config.secondaryText=item.director
-        cell.contentConfiguration=config
+        config.imageProperties.maximumSize=CGSize(width: 50, height: 50)
+        config.imageProperties.cornerRadius=10
+        imageView.returnImage(url: item.url) { image in
+            guard let image else {return}
+            DispatchQueue.main.async {
+                config.text=item.name
+                config.secondaryText=item.director
+                config.image=image
+                cell.contentConfiguration=config
+            }
+        }
+
+
         return cell
     }
     
